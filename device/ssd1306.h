@@ -1,5 +1,5 @@
 /**************************************************************  
- * Frequently used functions
+ * SSD1306 driver that is of the sensor board project
  * Copyright (c) 2020 Alexander Krapivniy (a.krapivniy@gmail.com)
  * 
  * This program is free software: you can redistribute it and/or modify  
@@ -14,28 +14,22 @@
  * You should have received a copy of the GNU General Public License 
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************/
-#include "utils.h"
+#ifndef __SSD1306_H__
+#define __SSD1306_H__
 
-inline void tsleep (uint16_t tick)
-{
-    while (tick--)  __asm__("nop");
-}
+#include <stdint.h>
 
-void bzero (uint8_t *dst, uint16_t size)
-{
-	while (size--)
-		dst[size] = 0;
-}
+#define SSD1306_I2CADDR  (0x3c<<1)
 
-void umemcpy(uint8_t *dst, uint8_t *src, uint8_t size)
-{
-	while (size--)
-	    *dst++ = *src++;
-}
+void ssd1306_init(uint8_t contrast);
+void ssd1306_sleep();
+void ssd1306_string(uint8_t x, uint8_t y, const char *text);
+void ssd1306_new_string(uint8_t x, uint8_t y, const char *text);
+void ssd1306_char(uint8_t x, uint8_t y, uint8_t c);
+void ssd1306_line(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
+void ssd1306_update(uint8_t part);
+void ssd1306_clear();
+void ssd1306_hex(uint8_t x, uint8_t y, uint8_t value);
 
-uint8_t strlen(const char *str)
-{
-	const char *s;
-	for (s = str; *s; ++s);
-	return(s - str);
-}
+#endif	/* __SSD1306_H__ */
+

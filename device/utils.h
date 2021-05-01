@@ -22,6 +22,8 @@
 inline void tsleep (uint16_t ticks);
 void bzero (uint8_t *dst, uint16_t size);
 void umemcpy(uint8_t *dst, uint8_t *src, uint8_t size);
+uint8_t strlen(const char *str);
+
 
 #endif /* __UTILS_H__ */
 

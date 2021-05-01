@@ -3,6 +3,9 @@
 #define FONTS_H
 
 
+#define SSD1306_FONT_WIDTH  8
+#define SSD1306_FONT_HEIGHT  8
+
 /* 8x8 Normal */
 const unsigned char ssd1306_font_table[]= {
 0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // ASCII - 32
