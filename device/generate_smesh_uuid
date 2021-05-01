@@ -1,0 +1,11 @@
+#!/bin/bash
+
+UUID=$(od -A n -t x -N 4 /dev/urandom |tr -d ' ')
+
+echo New UUID is $UUID
+echo "#ifndef UUID_H" > uuid.h
+echo "#define UUID_H" >> uuid.h
+echo "" >> uuid.h
+echo "#define SMESH_UUID 0x$UUID" >> uuid.h
+echo "" >> uuid.h
+echo "#endif /* UUID_H */" >> uuid.h
